@@ -1,0 +1,148 @@
+<!--
+  ~    Copyright 2020 CloudNetService Project and contributors
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900">
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+  <div class="md:flex flex-col md:flex-row md:min-h-screen md:mx-auto w-full">
+    <div @click.away="open = false" class="flex flex-col w-full md:w-64 text-gray-700 bg-gray-800 dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0" x-data="{ open: false }">
+      <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
+        <a href="#" class="flex items-center py-2 px-8 text-gray-100 hover:text-gray-200 text-lg font-semibold">
+          <img src="assets/icons/cloud.svg"/> 
+          <span class="mx-4 font-medium">CloudNet</span>
+        </a>
+        <button class="rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+          <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+            <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+            <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <nav :class="{'block': open, 'hidden': !open}" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-400 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="index.html">Dashboard</a>
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-400 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="cluster.html">Cluster</a>
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-400 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="tasks.html">Tasks</a>
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white bg-gray-900 rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Groups</a>
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-400 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="service.html">Services</a>
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-400 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="permissions.html">Permissions</a>
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-400 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="players.html">Players</a>
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-400 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="modules.html">Modules</a>
+        <div :class="{'block': open, 'hidden': !open}" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
+          <a class="flex items-center py-2 px-8 text-gray-100 hover:text-gray-200" href="#">
+            <img src="assets/icons/logout.svg"/> 
+            <span class="mx-4 font-medium">Logout</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+    <div class="w-full overflow-x-hidden flex flex-col">
+      <header class="grid justify-items-end w-full bg-transparent text-gray-400 p-4">
+        <ul class="flex items-center flex-shrink-0 space-x-6">
+          <li class="relative">
+              <img src="assets/icons/status.svg"/>
+              <span aria-hidden="true" class="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full"></span>
+          </li>
+          <li class="relative">
+              <img class="object-cover w-8 h-8 rounded-full" src="https://pbs.twimg.com/profile_images/1221609781296881665/FjGb4yqO_400x400.jpg" alt="" aria-hidden="true"/>
+          </li>
+        </ul>
+      </header>
+
+      <main class="w-full flex-grow p-6">
+        <div class="py-3">
+          <main class="h-full overflow-y-auto">
+            <div class="container mx-auto grid">
+              <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+                <!-- Groups start -->
+                <div class="min-w-0 p-4 bg-gray-800 rounded-lg shadow-lg">
+                  <h4 class="mb-4 font-semibold text-blue-500">Lobby</h4>
+                  <div class="flex">
+                    <span class="text-gray-400">•</span>
+                    <p class="flex-1 text-white items-center pl-2">Templates: <br>» local:lobby/default <br>» local:lobby/christmas<br></p>
+                  </div>
+                  <div class="flex">
+                    <span class="text-gray-400">•</span>
+                    <p class="flex-1 text-white items-center pl-2">Environment: MINECRAFT_SERVER<br></p>
+                  </div>
+                  <div class="flex justify-center mt-4 space-x-3 text-sm text-white">
+                    <div class="flex items-center">
+                      <button type="button" class="border border-blue-500 bg-blue-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:border-blue-600 hover:bg-blue-600 focus:outline-none focus:shadow-outline">
+                        Edit
+                      </button>
+                      <button type="button" class="border border-blue-500 bg-blue-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:border-blue-600 hover:bg-blue-600 focus:outline-none focus:shadow-outline">
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Groups end-->
+              </div>
+            </div>
+          </main>
+        </div>
+        <div class="py-3">
+          <main class="h-full overflow-y-auto">
+            <div class="container mx-auto grid">
+              <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-1">
+                <!-- Create Group -->
+                <div class="w-full">
+                  <div class="coding inverse-toggle px-5 pt-4 shadow-lg text-gray-100 text-sm font-mono subpixel-antialiased bg-gray-800  pb-6 pt-4 rounded-lg leading-normal overflow-hidden">
+                    <div class="top mb-2 flex">
+                      <h4 class="mb-2 font-bold text-white">Create Group</h4>
+                    </div>
+                    <div class="flex-1 flex flex-col md:flex-row">
+                      <div class="w-full flex-1 mx-2">
+                        <div class="my-2 p-1 bg-gray-900 flex border border-gray-900 rounded">
+                          <input placeholder="Name" class="p-1 px-2 appearance-none outline-none w-full bg-gray-900 text-gray-800 ">
+                        </div>
+                      </div>
+                      <div class="w-full flex-1 mx-2">
+                        <div class="my-2 p-1 bg-gray-900 flex border border-gray-900 rounded">
+                          <input placeholder="Storage" class="p-1 px-2 appearance-none outline-none w-full bg-gray-900 text-gray-800 ">
+                        </div>
+                      </div>
+                      <div class="w-full flex-1 mx-2">
+                        <div class="my-2 p-1 bg-gray-900 flex border border-gray-900 rounded">
+                          <input placeholder="Prefix" class="p-1 px-2 appearance-none outline-none w-full bg-gray-900 text-gray-800 ">
+                        </div>
+                      </div>
+                      <div class="w-full flex-1 mx-2">
+                        <div class="my-2 p-1 bg-gray-900 flex border border-gray-900 rounded">
+                          <input placeholder="Environment" class="p-1 px-2 appearance-none outline-none w-full bg-gray-900 text-gray-800 ">
+                        </div>
+                      </div>
+                    </div>
+                    <button type="button" class="border border-blue-500 bg-blue-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:border-blue-600 hover:bg-blue-600 focus:outline-none focus:shadow-outline">
+                      Create
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </main>
+      <footer class="w-full bg-transparent text-gray-400 text-center p-4">Copyright © 2020 CloudNetService</footer>
+    </div>
+  </div>
+</body>
+</html>
