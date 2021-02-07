@@ -15,50 +15,50 @@
  */
 
 const lineConfig = {
-    type: 'line',
-    data: {
-      labels: ['14:00', '14:10', '14:20', '14:30', '14:40', '14:50', '15:00'],
-      datasets: [
-        {
-          label: 'Usage in MB',
-          backgroundColor: '#10b981',
-          borderColor: '#10b981',
-          data: [100, 110, 160, 90, 50, 190, 70],
-          fill: false,
-        }
-      ],
+  type: 'line',
+  data: {
+    labels: ['14:00', '14:10', '14:20', '14:30', '14:40', '14:50', '15:00'],
+    datasets: [
+      {
+        label: 'Usage in MB',
+        backgroundColor: '#10b981',
+        borderColor: '#10b981',
+        data: [512, 1536, 2048, 2048, 1536, 1536, 2048],
+        fill: false,
+      }
+    ],
+  },
+  options: {
+    responsive: true,
+    legend: {
+      display: false,
     },
-    options: {
-      responsive: true,
-      legend: {
-        display: false,
-      },
-      tooltips: {
-        mode: 'index',
-        intersect: false,
-      },
-      hover: {
-        mode: 'nearest',
-        intersect: true,
-      },
-      scales: {
-        x: {
+    tooltips: {
+      mode: 'index',
+      intersect: false,
+    },
+    hover: {
+      mode: 'nearest',
+      intersect: true,
+    },
+    scales: {
+      x: {
+        display: true,
+        scaleLabel: {
           display: true,
-          scaleLabel: {
-            display: true,
-            labelString: 'Value',
-          },
-        },
-        y: {
-          display: true,
-          scaleLabel: {
-            display: true,
-            labelString: 'Value',
-          },
+          labelString: 'Value',
         },
       },
+      y: {
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: 'Value',
+        },
+      },
     },
-  }
-  
-  const lineCtx = document.getElementById('ram')
-  window.myLine = new Chart(lineCtx, lineConfig)
+  },
+}
+
+const lineCtx = document.getElementById('ram')
+window.myLine = new Chart(lineCtx, lineConfig)
